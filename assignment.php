@@ -22,7 +22,7 @@ function bmi_calculator($bmi){
         };
     switch ($obeseBmi) {
         case true:
-            $calculatedBmi = "Your BMI falls within obese range. Omo nawa for you o😭😂😂";
+            $calculatedBmi = "Your BMI falls within obese range. Omo nawa for you o😂😂";
         }
     switch ($healthyBmi) {
         case true:
