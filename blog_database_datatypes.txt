@@ -1,0 +1,84 @@
+- Admin 
+* id - INT
+* email - VARCHAR
+* password - VARCHAR
+* role - VARCHAR
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+* name - VARCHAR
+* username - VARCHAR
+
+- Users
+* id - INT
+* email - VARCHAR
+* username - VARCHAR
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+* password - VARCHAR
+
+- Likes
+* id - IMT
+* post_id - INT
+* user_id - INT
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+
+- Categories
+* id - INT
+* category - VARCHAR
+
+- Posts
+* id - INT
+* category_id - INT
+* admin_id - INT
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+* title - VARCHAR
+* decription - MEDIUMTEXT
+* post body -LONGTEXT
+* slug - TINYTEXT
+
+- Comments
+* id - INT
+* post_id - INT
+* user_id - INT
+* comment - VARCHAR
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+
+- Newsletter
+* id - INT
+* name - VARCHAR
+* email - VARCHAR
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+
+- Breaking news
+* id - INT
+* title - VARCHAR
+* post_id - INT
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
+
+- Visitors
+* id - INT
+* ip address - VARBINARY
+* device model - VARCHAR
+* os - VARCHAR
+* location - VARCHAR
+* time logged in - TIMESTAMP
+* time logged out - TIMESTAMP
+
+Clicks
+* id - INT
+* post_id - INT
+* created at - TIMESTAMP
+* updated at - TIMESTAMP
+* deleted at - TIMESTAMP
