@@ -1,11 +1,15 @@
 <?php   
 
+if(isset($_POST["calculate"])){
+    $yourweight = floatval($_POST['weight']);
+    $yourheight = floatval($_POST['height']);
+
+    $yourBmi =number_format(your_bmi($yourweight, $yourheight), 2);
+}
 function your_bmi($weight, $height){
     $myBmi = $weight / ($height * $height);
     return $myBmi;
 }
-
-$yourBmi =number_format(your_bmi(70, 1.73), 2);
 function bmi_calculator($bmi){
     $underweightBmi = $bmi < 18.5 ;
     $overweightBmi = $bmi > 25.0 && $bmi < 29.9;
@@ -23,7 +27,7 @@ function bmi_calculator($bmi){
     switch ($obeseBmi) {
         case true:
             $calculatedBmi = "Your BMI falls within obese range. Omo nawa for you o😂😂";
-        }
+        }   ;               
     switch ($healthyBmi) {
         case true:
             $calculatedBmi = "Your BMI falls within healthy range. You're doing well✅";
@@ -45,6 +49,18 @@ $bmiStatement = bmi_calculator($yourBmi);
 </head>
 <body>
     <h1>Welcome!</h1>
+    <form action="assignment.php" method="POST">
+        <p>
+            Weight: <input type="text" name="weight" placeholder="Enter your weight in kg">
+        </p>
+        <p>
+            Height: <input type="text" name="height" placeholder="Enter your height in metres">
+        </p>
+        <p>
+            <button type="submit" name="calculate">Calculate!</button>
+        </p>
+
+    </form>
     <p>Your BMI is <?= $yourBmi ?>! <?= $bmiStatement?></p>
 </body>
 </html>
