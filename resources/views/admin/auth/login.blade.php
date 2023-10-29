@@ -8,7 +8,7 @@
             <div class="card-body p-4">
                 <div class="text-center mt-2">
                     <h5 class="text-primary">Welcome Back !</h5>
-                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                    <p class="text-muted">Sign in to access your dashboard.</p>
                 </div>
                 <div class="p-2 mt-4">
                     <form action="{{ url('/admin/login') }}" method="POST">
@@ -16,8 +16,6 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="{{ old('email') }}" autofocus>
-
-                            
                             @if ($errors->has('email'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -55,10 +53,6 @@
             <!-- end card body -->
         </div>
         <!-- end card -->
-
-        <div class="mt-4 text-center">
-            <p class="mb-0">Don't have an account ? <a href="auth-signup-basic.html" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
-        </div>
 
     </div>
 </div>

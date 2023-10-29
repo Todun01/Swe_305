@@ -20,10 +20,10 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>ADMIN LOGIN</title>
+    <title>{{env('APP_NAME')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
+    <meta content="{{env('APP_DESCRIPTION')}}" name="description" />
+    <meta content="{{env('APP_AUTHOR')}}" name="Author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('admin_assets/images/favicon.ico')}}">
 
@@ -70,7 +70,7 @@
                                     <img src="{{asset('admin_assets/images/logo-light.png')}}" alt="" height="20">
                                 </a>
                             </div>
-                            <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                            <p class="mt-3 fs-15 fw-medium">ADMIN</p>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                <script>document.write(new Date().getFullYear())</script> OTAGO. Crafted with <i class="mdi mdi-heart text-danger"></i> in SWE305 Class
                             </p>
                         </div>
                     </div>
