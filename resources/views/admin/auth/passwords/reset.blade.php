@@ -68,6 +68,7 @@
                                 <div class="p-2">
                                     <form action="{{ url('/admin/password/reset') }}" method="POST">
                                         @csrf
+                                        <input type="hidden" name="token" value="{{ $token }}">
                                         <div class="mb-3">
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup">
@@ -85,7 +86,7 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="confirm-password-input">Confirm Password</label>
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input name="confirmpassword" type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirm-password-input" required>
+                                                <input name="password_confirmation" type="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Confirm password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirm-password-input" required>
                                                 <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="confirm-password-input"><i class="ri-eye-fill align-middle"></i></button>
                                                 @if ($errors->has('password_confirmation'))
                                                     <span class="help-block">
@@ -164,7 +165,7 @@
     <script src="{{asset('admin_assets/js/pages/particles.app.js')}}"></script>
 
     <!-- password-addon init -->
-    <script src="{{asset('admin_assets/js/pages/passowrd-create.init.js')}}"></script>
+    {{-- <script src="{{asset('admin_assets/js/pages/passowrd-create.init.js')}}"></script> --}}
 </body>
 
 </html>

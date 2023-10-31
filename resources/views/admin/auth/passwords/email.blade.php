@@ -73,7 +73,8 @@
                                     Enter your email and instructions will be sent to you!
                                 </div>
                                 <div class="p-2">
-                                    <form action="{{ url('/admin/password/email') }}">
+                                    <form action="{{ url('/admin/password/email') }}" method="POST">
+                                        @csrf
                                         <div class="mb-4">
                                             <label class="form-label">Email</label>
                                             <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email">
