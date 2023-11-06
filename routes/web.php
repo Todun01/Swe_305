@@ -32,6 +32,11 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('/password/reset/{token}', [App\Http\Controllers\Admin\Auth\ResetPasswordController::class, 'showResetForm']);
 
   Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'home'])->name('admin.home');
+  Route::get('/category', [App\Http\Controllers\Admin\HomeController::class,'category'])->name('admin.category');
+  Route::get('/blogspot', [App\Http\Controllers\Admin\HomeController::class,'blogspot'])->name('admin.posts');
+  Route::get('/bn', [App\Http\Controllers\Admin\HomeController::class,'bn'])->name('admin.bn');
+  Route::get('/newsletter', [App\Http\Controllers\Admin\HomeController::class,'newsletter'])->name('admin.newsletter');
+  Route::get('/users', [App\Http\Controllers\Admin\HomeController::class,'users'])->name('admin.users');
 });
 
 

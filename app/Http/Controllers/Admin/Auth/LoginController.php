@@ -50,7 +50,6 @@ class LoginController extends Controller
     {
         return view('admin.auth.login');
     }
-
     /**
      * Get the guard to be used during authentication.
      *
