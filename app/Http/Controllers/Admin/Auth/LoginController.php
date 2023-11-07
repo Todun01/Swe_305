@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use AlAminFirdows\LaravelMultiAuth\Traits\LogsoutGuard;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -48,8 +49,13 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('admin.auth.login');
+        return response(view('admin.auth.login'));
     }
+
+    // public function logout(Request $request){
+    //     $r = $request->session()->flush();
+    //     return redirect('/admin/login');
+    // }
     /**
      * Get the guard to be used during authentication.
      *

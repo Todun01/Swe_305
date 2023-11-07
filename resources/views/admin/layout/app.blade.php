@@ -46,7 +46,7 @@
 </head>
 
 <body>
-
+    @include('sweetalert::alert')
     <!-- Begin page -->
     <div id="layout-wrapper">
 
@@ -399,7 +399,9 @@
                         <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$5971.67</b></span></a>
                         <a class="dropdown-item" href="pages-profile-settings.html"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
                         <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                        <a class="dropdown-item" href="{{route('logout')}}"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                        <a class="dropdown-item" href="{{url('/admin/logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -467,13 +469,13 @@
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="mdi mdi-home"></i> <span data-key="t-home">Home</span>
+                                <i class="mdi mdi-home"></i> <span data-key="t-home">Dashboards</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{url('/admin/home')}}" class="nav-link" data-key="t-dashboard">
-                                            <i class="mdi mdi-home-group"></i> <span data-key="t-dashboard">Dashboard</span>
+                                            <i class="mdi mdi-home-group"></i> <span data-key="t-dashboard">Home</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -499,6 +501,14 @@
                                     <li class="nav-item">
                                         <a href="{{url('/admin/users')}}" class="nav-link" data-key="t-users">
                                             <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Users</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('/admin/logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link" data-key="t-logout">
+                                            <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                            </form>
+                                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Logout</span>
                                         </a>
                                     </li>
                                 </ul>
