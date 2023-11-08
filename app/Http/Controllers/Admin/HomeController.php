@@ -42,11 +42,13 @@ class HomeController extends Controller
             'category' => 'required|string|unique:categories',
             
         ]);
+        $slug =strtolower(trim(preg_replace('/[^A-Za-z0-9]+/', '-', $request->input("category"))));
         if ($validator->fails()) {
             Alert::error('Oops!', 'Unsuccessful Submission')->persistent('Close');
             return redirect()->back();
         }
         Alert::success('Success!','Category submitted successfully')->persistent('Close');
+        $category->slug = $slug;
         $category->save();
         return redirect()->back();
     }
