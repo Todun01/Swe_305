@@ -32,6 +32,14 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
 
+    <!--datatable css-->
+    <link rel="stylesheet" href="{{asset('assets/datatables/1.11.5/css/dataTables.bootstrap5.min.css')}}" />
+    <!--datatable responsive css-->
+    <link rel="stylesheet" href="{{asset('assets/datatables/responsive/2.2.9/css/responsive.bootstrap.min.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('assets/datatables/buttons/2.2.2/css/buttons.dataTables.min.css')}}">
+
+
     <!-- Layout config Js -->
     <script src="{{asset('assets/js/layout.js')}}"></script>
     <!-- Bootstrap Css -->
@@ -433,94 +441,92 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-        <!-- ========== App Menu ========== -->
-        <div class="app-menu navbar-menu">
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <!-- Dark Logo-->
-                <a href="index.html" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
-                    </span>
-                </a>
-                <!-- Light Logo-->
-                <a href="index.html" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
-                    </span>
-                </a>
-                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
-                    <i class="ri-record-circle-line"></i>
-                </button>
-            </div>
-
-            <div id="scrollbar">
-                <div class="container-fluid">
-
-                    <div id="two-column-menu">
-                    </div>
-                    <ul class="navbar-nav" id="navbar-nav">
-                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="mdi mdi-home"></i> <span data-key="t-home">Dashboards</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{url('/admin/home')}}" class="nav-link" data-key="t-dashboard">
-                                            <i class="mdi mdi-home-group"></i> <span data-key="t-dashboard">Home</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('/admin/category')}}" class="nav-link" data-key="t-category"> 
-                                            <i class="mdi mdi-layers-triple-outline"></i> <span data-key="t-categories">Categories</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('/admin/blogspot')}}" class="nav-link" data-key="t-blogspot"> 
-                                            <i class="mdi mdi-monitor-edit"></i> <span data-key="t-blogspot">Blogspot</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('/admin/bn')}}" class="nav-link" data-key="t-bn">
-                                            <i class="mdi mdi-alert-decagram"></i> <span data-key="t-bn">Breaking News</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('/admin/newsletter')}}" class="nav-link" data-key="t-newsletter">
-                                            <i class="mdi mdi-newspaper-variant-multiple"></i> <span data-key="t-newsletter">Newsletter</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{url('/admin/users')}}" class="nav-link" data-key="t-users">
-                                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Users</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url('/admin/logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link" data-key="t-logout">
-                                            <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                            </form>
-                                            <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Logout</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> <!-- end Dashboard Menu -->
-                    </ul>
-                </div>
-                <!-- Sidebar -->
-            </div>
-
-            <div class="sidebar-background"></div>
+    <!-- ========== App Menu ========== -->
+    <div class="app-menu navbar-menu">
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+            <!-- Dark Logo-->
+            <a href="index.html" class="logo logo-dark">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                </span>
+            </a>
+            <!-- Light Logo-->
+            <a href="index.html" class="logo logo-light">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-light.png" alt="" height="17">
+                </span>
+            </a>
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+                <i class="ri-record-circle-line"></i>
+            </button>
         </div>
+
+        <div id="scrollbar">
+            <div class="container-fluid">
+
+                <div id="two-column-menu">
+                </div>
+                <ul class="navbar-nav" id="navbar-nav">
+                    <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <i class="mdi mdi-home"></i> <span data-key="t-home">Dashboards</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarDashboards">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{url('/admin/home')}}" class="nav-link" data-key="t-dashboard">
+                                        <i class="mdi mdi-home-group"></i> <span data-key="t-dashboard">Home</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('/admin/category')}}" class="nav-link" data-key="t-category"> 
+                                        <i class="mdi mdi-layers-triple-outline"></i> <span data-key="t-categories">Categories</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('/admin/blogspot')}}" class="nav-link" data-key="t-blogspot"> 
+                                        <i class="mdi mdi-monitor-edit"></i> <span data-key="t-blogspot">Blogspot</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('/admin/bn')}}" class="nav-link" data-key="t-bn">
+                                        <i class="mdi mdi-alert-decagram"></i> <span data-key="t-bn">Breaking News</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('/admin/newsletter')}}" class="nav-link" data-key="t-newsletter">
+                                        <i class="mdi mdi-newspaper-variant-multiple"></i> <span data-key="t-newsletter">Newsletter</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('/admin/users')}}" class="nav-link" data-key="t-users">
+                                        <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Users</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('/admin/logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link" data-key="t-logout">
+                                        <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                        </form>
+                                        <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> <!-- end Dashboard Menu -->
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+    </div>
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
@@ -548,9 +554,26 @@
         <script src="{{asset('assets/libs/feather-icons/feather.min.js')}}"></script>
         <script src="{{asset('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
         <script src="{{asset('assets/js/plugins.js')}}"></script>
+        <script src="{{asset('assets/jquery/jquery-3.6.0.min.js')}}"></script>
+        @yield('scripts')
+
+        
+    
+
+    <!--datatable js-->
+    <script src="{{asset('assets/datatables/1.11.5/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/datatables/1.11.5/js/dataTables.bootstrap5.min.js')}}"></script>
+    <script src="{{asset('assets/datatables/responsive/2.2.9/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('assets/datatables/buttons/2.2.2/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('assets/datatables/buttons/2.2.2/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('assets/datatables/buttons/2.2.2/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('assets/cloudfare/ajax/libs/pdfmake/0.1.53/vfs_fonts.js')}}"></script>
+    <script src="{{asset('assets/cloudfare/ajax/libs/pdfmake/0.1.53/pdfmake.min.js')}}"></script>
+    <script src="{{asset('assets/cloudfare/ajax/libs/jszip/3.1.3/jszip.min.js')}}"></script>
+    <script src="{{asset('assets/js/pages/datatables.init.js')}}"></script>
 
         <!-- App js -->
-        <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{asset('assets/js/app.js')}}"></script>
 </body>
 
 </html>

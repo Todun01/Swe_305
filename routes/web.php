@@ -35,10 +35,17 @@ Route::group(['prefix' => 'admin'], function () {
 
   Route::get('/category', [App\Http\Controllers\Admin\HomeController::class,'category'])->name('admin.category');
   Route::post('/addCategory', [App\Http\Controllers\Admin\HomeController::class,'addCategory'])->name('admin.addCategory');
+  Route::get('/editCategory/{id}', [App\Http\Controllers\Admin\HomeController::class,'editCategory'])->name('admin.editCategory');
+  Route::put('/updateCategory', [App\Http\Controllers\Admin\HomeController::class,'updateCategory'])->name('admin.updateCategory');
+  Route::delete('/deleteCategory', [App\Http\Controllers\Admin\HomeController::class,'deleteCategory'])->name('admin.deleteCategory');
+
+
 
   Route::get('/blogspot', [App\Http\Controllers\Admin\HomeController::class,'blogspot'])->name('admin.posts');
 
   Route::get('/bn', [App\Http\Controllers\Admin\HomeController::class,'bn'])->name('admin.bn');
+  Route::post('/addBN', [App\Http\Controllers\Admin\HomeController::class,'addBN'])->name('admin.addBN');
+
 
   Route::get('/newsletter', [App\Http\Controllers\Admin\HomeController::class,'newsletter'])->name('admin.newsletter');
 

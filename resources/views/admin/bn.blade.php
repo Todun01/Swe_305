@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+{{-- @extends('admin.layout.app')
 @section('content')
 <div class="main-content">
 
@@ -45,14 +45,14 @@
                                             <h5 class="modal-title" id="exampleModalLabel">&nbsp;</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                         </div>
-                                        <form method="POST" action="{{url('admin/addCategory')}}" class="tablelist-form" autocomplete="off">
+                                        <form method="POST" action="{{url('admin/addBN')}}" class="tablelist-form" autocomplete="off">
                                             @csrf
                                             <div class="modal-body">
                                                 <input type="hidden" id="id-field" />
 
                                                 <div class="mb-3">
                                                     <label for="customername-field" class="form-label">Breaking News Title</label>
-                                                    <input name="category" type="text" id="customername-field" class="form-control" placeholder="Enter title" required />
+                                                    <input name="breaking_news" type="text" id="customername-field" class="form-control" placeholder="Enter title" required />
                                                 </div>
 
                                                
@@ -116,4 +116,4 @@
 </div>
 
 </div>
-@endsection
+@endsection --}}
