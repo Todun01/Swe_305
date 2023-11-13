@@ -21,7 +21,6 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
 
-<!-- Mirrored from themesbrand.com/velzon/html/default/pages-starter.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 26 Oct 2023 12:54:37 GMT -->
 <head>
 
     <meta charset="utf-8" />
@@ -39,6 +38,12 @@
 
     <link rel="stylesheet" href="{{asset('assets/datatables/buttons/2.2.2/css/buttons.dataTables.min.css')}}">
 
+    <script src="https://cdn.tiny.cloud/1/rh23u7cy4kko326v92wa8nhahu3laq407yrsqogztkv3n9z2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#textarea',
+        });
+    </script>
 
     <!-- Layout config Js -->
     <script src="{{asset('assets/js/layout.js')}}"></script>
@@ -492,7 +497,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{url('/admin/blogspot')}}" class="nav-link" data-key="t-blogspot"> 
+                                    <a href="{{url('/admin/posts')}}" class="nav-link" data-key="t-blogspot"> 
                                         <i class="mdi mdi-monitor-edit"></i> <span data-key="t-blogspot">Blogspot</span>
                                     </a>
                                 </li>
@@ -516,7 +521,7 @@
                                         <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                         </form>
-                                        <i class="mdi mdi-account-multiple"></i> <span data-key="t-users">Logout</span>
+                                        <i class="mdi mdi-power"></i> <span data-key="t-users">Logout</span>
                                     </a>
                                 </li>
                             </ul>

@@ -52,10 +52,10 @@ class LoginController extends Controller
         return response(view('admin.auth.login'));
     }
 
-    // public function logout(Request $request){
-    //     $r = $request->session()->flush();
-    //     return redirect('/admin/login');
-    // }
+    public function logout(Request $request){
+         $r = $request->session()->flush();
+         return redirect('/admin/login');
+     }
     /**
      * Get the guard to be used during authentication.
      *

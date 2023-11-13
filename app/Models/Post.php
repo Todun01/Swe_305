@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Posts extends Model {
+class Post extends Model {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'category_id', 'admin_id', 'title', 'description', 'post_body', 'slug'
+        'category_id', 'admin_id', 'title', 'description', 'post_body', 'slug', 'image'
     ];
 
     public function click(): HasMany{ 

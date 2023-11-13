@@ -35,13 +35,16 @@ Route::group(['prefix' => 'admin'], function () {
 
   Route::get('/category', [App\Http\Controllers\Admin\HomeController::class,'category'])->name('admin.category');
   Route::post('/addCategory', [App\Http\Controllers\Admin\HomeController::class,'addCategory'])->name('admin.addCategory');
-  Route::get('/editCategory/{id}', [App\Http\Controllers\Admin\HomeController::class,'editCategory'])->name('admin.editCategory');
-  Route::put('/updateCategory', [App\Http\Controllers\Admin\HomeController::class,'updateCategory'])->name('admin.updateCategory');
-  Route::delete('/deleteCategory', [App\Http\Controllers\Admin\HomeController::class,'deleteCategory'])->name('admin.deleteCategory');
+  Route::post('/updateCategory', [App\Http\Controllers\Admin\HomeController::class,'updateCategory'])->name('admin.updateCategory');
+  Route::post('/deleteCategory', [App\Http\Controllers\Admin\HomeController::class,'deleteCategory'])->name('admin.deleteCategory');
 
 
 
-  Route::get('/blogspot', [App\Http\Controllers\Admin\HomeController::class,'blogspot'])->name('admin.posts');
+  Route::get('/posts', [App\Http\Controllers\Admin\HomeController::class,'posts'])->name('admin.posts');
+  Route::post('/addPost', [App\Http\Controllers\Admin\HomeController::class,'addPost'])->name('admin.addPost');
+  Route::post('/updatePost', [App\Http\Controllers\Admin\HomeController::class,'updatePost'])->name('admin.updatePost');
+  Route::post('/deletePost', [App\Http\Controllers\Admin\HomeController::class,'deletePost'])->name('admin.deletePost');
+
 
   Route::get('/bn', [App\Http\Controllers\Admin\HomeController::class,'bn'])->name('admin.bn');
   Route::post('/addBN', [App\Http\Controllers\Admin\HomeController::class,'addBN'])->name('admin.addBN');
