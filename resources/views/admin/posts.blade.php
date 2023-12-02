@@ -47,6 +47,7 @@ $snCount = 1
                                         <th>S/N</th>
                                         <th>Title</th>
                                         <th>Category</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -56,28 +57,59 @@ $snCount = 1
                                             <td>{{$snCount++}}</td>
                                             <td>{{$post->title}}</td>
                                             <td>{{$post->category->category}} </td>
+                                            @if ($post->status == 'published')
+                                                <td><span class="badge bg-success">{{$post->status}}</span></td>
+                                            @else
+                                                <td><span class="badge bg-danger">{{$post->status}}</span></td>
+                                            @endif
                                             <td>
                                                 <div class="dropdown d-inline-block">
                                                     <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                         <i class="ri-more-fill align-middle"></i>
                                                     </button>
-                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                        <li>
-                                                            <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#showViewModal{{$post->id}}">
-                                                                <i class="ri-eye-fill  align-bottom me-2 text-muted"></i> 
-                                                                View
-                                                            </button>
-                                                            <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#showEditModal{{$post->id}}">
-                                                                <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
-                                                                Edit
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button id="deleteButton" class="dropdown-item remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{$post->id}}">
-                                                                <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
-                                                            </button>
-                                                        </li>
-                                                    </ul>
+                                                    @if ($post->status == 'published')
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li>
+                                                                <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#unpublishModal{{$post->id}}">
+                                                                    <span class="badge bg-danger">Un-Publish</span>
+                                                                </button>
+                                                                <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#showViewModal{{$post->id}}">
+                                                                    <i class="ri-eye-fill  align-bottom me-2 text-muted"></i> 
+                                                                    View
+                                                                </button>
+                                                                <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#showEditModal{{$post->id}}">
+                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                    Edit
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button id="deleteButton" class="dropdown-item remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{$post->id}}">
+                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    @else
+                                                        <ul class="dropdown-menu dropdown-menu-end">
+                                                            <li>
+                                                                <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#publishModal{{$post->id}}">
+                                                                    <span class="badge bg-success">Publish</span>
+                                                                </button>
+                                                                <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#showViewModal{{$post->id}}">
+                                                                    <i class="ri-eye-fill  align-bottom me-2 text-muted"></i> 
+                                                                    View
+                                                                </button>
+                                                                <button id="editBtn" class="dropdown-item edit-item-btn" data-bs-toggle="modal" data-bs-target="#showEditModal{{$post->id}}">
+                                                                    <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> 
+                                                                    Edit
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button id="deleteButton" class="dropdown-item remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteModal{{$post->id}}">
+                                                                    <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    @endif 
                                                 </div>
                                             </td>
                                         </tr>
@@ -91,11 +123,11 @@ $snCount = 1
                                                     <form method="POST" action="{{url('/admin/updatePost')}}" class="tablelist-form" autocomplete="off">
                                                         @csrf
                                                         <div class="modal-body">
-                                                            <input type="hidden" id="category_id" name="category_id" value="{{$categoryItem->id}}" />
+                                                            <input type="hidden" id="category_id" name="category_id" value="{{$post->id}}" />
 
                                                             <div class="mb-3">
                                                                 <label for="customername-field" class="form-label">Category Name</label>
-                                                                <input name="category" type="text" id="category" value="{{$categoryItem->category}}" class="form-control" required />
+                                                                <input name="category" type="text" id="category" value="{{$post->category}}" class="form-control" required />
                                                             </div>
                 
                                                             
@@ -132,6 +164,50 @@ $snCount = 1
                                                 </div>
                                             </div>
                                         </div> --}}
+                                        <div class="modal fade flip" id="unpublishModal{{$post->id}}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body p-5 text-center">
+                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
+                                                        <div class="mt-4 text-center">
+                                                            <form action="{{url('/admin/unpublishPost')}}" method="POST">
+                                                                @csrf
+                                                                <h4>You are about to un-publish the {{$post->title}} Post?</h4>
+                                                                <p class="text-muted fs-15 mb-4">Un-publishing this post will make it and all its content unavailable for users.</p>
+                                                                <input type="hidden" name="post_id" id="post_id" value="{{$post->id}}">
+                                                                <input type="hidden" name="post_status" id="post_status" value="{{$post->status}}">
+                                                                <div class="hstack gap-2 justify-content-center remove">
+                                                                    <button type="button" class="btn btn-link link-success fw-medium text-decoration-none" id="deleteRecord-close" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Cancel</button>
+                                                                    <button class="btn btn-danger" id="delete-record" type="submit">Yes, UnPublish It</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade flip" id="publishModal{{$post->id}}" tabindex="-1" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body p-5 text-center">
+                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#405189,secondary:#f06548" style="width:90px;height:90px"></lord-icon>
+                                                        <div class="mt-4 text-center">
+                                                            <form action="{{url('/admin/publishPost')}}" method="POST">
+                                                                @csrf
+                                                                <h4>You are about to publish the {{$post->title}} Post?</h4>
+                                                                <p class="text-muted fs-15 mb-4">Publishing this post will make it and all its content available for users.</p>
+                                                                <input type="hidden" name="post_id" id="post_id" value="{{$post->id}}">
+                                                                <input type="hidden" name="post_status" id="post_status" value="{{$post->status}}">
+                                                                <div class="hstack gap-2 justify-content-center remove">
+                                                                    <button type="button" class="btn btn-link link-success fw-medium text-decoration-none" id="deleteRecord-close" data-bs-dismiss="modal"><i class="ri-close-line me-1 align-middle"></i> Cancel</button>
+                                                                    <button class="btn btn-danger" id="delete-record" type="submit">Yes, Publish It</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>

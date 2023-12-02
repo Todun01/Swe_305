@@ -12,7 +12,7 @@ class Post extends Model {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'category_id', 'admin_id', 'title', 'description', 'post_body', 'slug', 'image'
+        'category_id', 'admin_id', 'title', 'description', 'post_body', 'slug', 'image', 'status'
     ];
 
     public function click(): HasMany{ 

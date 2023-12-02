@@ -145,6 +145,54 @@ class HomeController extends Controller
 
         
     }
+    public function unpublishPost(Request $request){
+        $post = Post::find($request->input('post_id'));
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required',
+            
+        ]);
+        if ($validator->fails()) {
+            Alert::error('Oops!', 'Failed to unpublish post')->persistent('Close');
+            return redirect()->back();
+        }
+        if(!$post = Post::find($request->input('post_id'))){
+            Alert::error('Oops!', 'Post not found')->persistent('Close');
+            return redirect()->back();
+        }
+        if(!$post->status = $request->input('post_status')){
+            Alert::error('Oops!', 'Post is not published')->persistent('Close');
+            return redirect()->back();
+        }
+        $post->status = 'unpublished';
+        if($post->save()){
+            Alert::success('Success!','Post unpublished successfully')->persistent('Close');
+            return redirect()->back();
+        }
+    }
+    public function publishPost(Request $request){
+        $post = Post::find($request->input('post_id'));
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required',
+            
+        ]);
+        if ($validator->fails()) {
+            Alert::error('Oops!', 'Failed to publish post')->persistent('Close');
+            return redirect()->back();
+        }
+        if(!$post = Post::find($request->input('post_id'))){
+            Alert::error('Oops!', 'Post not found')->persistent('Close');
+            return redirect()->back();
+        }
+        if(!$post->status = $request->input('post_status')){
+            Alert::error('Oops!', 'Post is already published')->persistent('Close');
+            return redirect()->back();
+        }
+        $post->status = 'published';
+        if($post->update()){
+            Alert::success('Success!','Post Published successfully')->persistent('Close');
+            return redirect()->back();
+        }
+    }
     public function bn(){
         return view("admin.bn");
     }

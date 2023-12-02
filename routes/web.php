@@ -44,6 +44,8 @@ Route::group(['prefix' => 'admin'], function () {
   Route::post('/addPost', [App\Http\Controllers\Admin\HomeController::class,'addPost'])->name('admin.addPost');
   Route::post('/updatePost', [App\Http\Controllers\Admin\HomeController::class,'updatePost'])->name('admin.updatePost');
   Route::post('/deletePost', [App\Http\Controllers\Admin\HomeController::class,'deletePost'])->name('admin.deletePost');
+  Route::post('/unpublishPost', [App\Http\Controllers\Admin\HomeController::class,'unpublishPost'])->name('admin.unpublishPost');
+  Route::post('/publishPost', [App\Http\Controllers\Admin\HomeController::class,'publishPost'])->name('admin.publishPost');
 
 
   Route::get('/bn', [App\Http\Controllers\Admin\HomeController::class,'bn'])->name('admin.bn');
